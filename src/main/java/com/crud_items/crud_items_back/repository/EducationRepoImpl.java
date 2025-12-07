@@ -36,7 +36,7 @@ public class EducationRepoImpl implements IEducationRepo {
     @Override
     public Education save(Education education) {
         if (education.getId() == null) {
-            String insertSql = "INSERT INTO education (degree, institution, start_date, end_date, description, personal_info_id) VALUES (?, ?, ?, ?, ?, ?)";
+            String insertSql = "INSERT INTO educations (degree, institution, start_date, end_date, description, personal_info_id) VALUES (?, ?, ?, ?, ?, ?)";
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(
                     connection -> {
@@ -52,7 +52,7 @@ public class EducationRepoImpl implements IEducationRepo {
             Long id = keyHolder.getKey().longValue();
             education.setId(id);
         } else {
-            String updateSql = "UPDATE education SET degree = ?, institution = ?, start_date = ?, end_date = ?, description = ?, personal_info_id = ? WHERE id = ?";
+            String updateSql = "UPDATE educations SET degree = ?, institution = ?, start_date = ?, end_date = ?, description = ?, personal_info_id = ? WHERE id = ?";
             jdbcTemplate.update(updateSql,
                     education.getDegree(),
                     education.getInstitution(),
@@ -67,7 +67,7 @@ public class EducationRepoImpl implements IEducationRepo {
 
     @Override
     public Optional<Education> findById(Long id) {
-        String query = "SELECT * FROM education WHERE id = ?";
+        String query = "SELECT * FROM educations WHERE id = ?";
         try {
             Education results = jdbcTemplate.queryForObject(query, educationRowMapper, id);
             return Optional.ofNullable(results);
@@ -78,19 +78,19 @@ public class EducationRepoImpl implements IEducationRepo {
 
     @Override
     public List<Education> findAll() {
-        String sql = "SELECT * FROM education";
+        String sql = "SELECT * FROM educations";
         return jdbcTemplate.query(sql, educationRowMapper);
     }
 
     @Override
     public void deleteById(Long id) {
-        String sql = "DELETE FROM education WHERE id = ?";
+        String sql = "DELETE FROM educations WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
     public List<Education> findByPersonId(Long personId) {
-        String query = "SELECT * FROM education WHERE personal_info_id = ?";
+        String query = "SELECT * FROM educations WHERE personal_info_id = ?";
         return jdbcTemplate.query(query, educationRowMapper, personId);
     }
 

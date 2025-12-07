@@ -1,0 +1,12 @@
+PUT  http://localhost:8080/api/education/3
+Content-Type: application/json
+Accept: application/json
+
+{
+  "degree": "Ingeniería en Sistemas 02",
+  "institution": "blabla",
+  "startDate": "2015-03-01",
+  "endDate": "2020-12-15",
+  "description": "Especialización en desarrollo de software y bases de datos.",
+  "personalInfoId": 1
+}
