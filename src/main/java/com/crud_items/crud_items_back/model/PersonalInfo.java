@@ -1,5 +1,8 @@
 package com.crud_items.crud_items_back.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,16 +15,34 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonalInfo {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String title;
-    private String profileDescription;
-    private String profileImageUrl;
-    private Integer yearsOfExperience;
-    private String email;
-    private String phone;
-    private String linkedinUrl;
-    private String githubUrl;
 
-    // Getters and setters omitted for brevity
+    @NotBlank(message = "First name is mandatory")
+    private String firstName;
+
+    @NotBlank(message = "Last name is mandatory")
+    private String lastName;
+
+    @NotBlank(message = "Title is mandatory")
+    private String title;
+
+    @NotBlank(message = "Profile description is mandatory")
+    private String profileDescription;
+
+    @NotBlank(message = "Profile image URL is mandatory")
+    private String profileImageUrl;
+
+    @Min(value = 0, message = "Years of experience must be non-negative")
+    private Integer yearsOfExperience;
+
+    @Email(message = "Email should be valid")
+    private String email;
+
+    @NotBlank(message = "Phone number is mandatory")
+    private String phone;
+
+    @NotBlank(message = "LinkedIn URL is mandatory")
+    private String linkedinUrl;
+
+    @NotBlank(message = "GitHub URL is mandatory")
+    private String githubUrl;
 }

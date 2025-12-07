@@ -4,21 +4,36 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.Validator;
 
+import com.crud_items.crud_items_back.exception.ValidationException;
 import com.crud_items.crud_items_back.model.PersonalInfo;
 import com.crud_items.crud_items_back.repository.IPersionalInfoRespository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PersonalInfoServiceImp implements IPersonalInfoService {
 
     private final IPersionalInfoRespository personalInfoRepository;
-
-    public PersonalInfoServiceImp(IPersionalInfoRespository personalInfoRepository) {
-        this.personalInfoRepository = personalInfoRepository;
-    }
+    private final Validator validator;
 
     @Override
     public PersonalInfo save(PersonalInfo personalInfo) {
+        BindingResult result = new BeanPropertyBindingResult(personalInfo, "personalInfo");
+        validator.validate(personalInfo, result);
+        if (result.hasErrors()) {
+            List<ObjectError> errors = result.getAllErrors();
+            for (ObjectError error : errors) {
+                System.out.println(error.getDefaultMessage());
+            }
+
+            throw new ValidationException(result);
+        }
         PersonalInfo savedPersonalInfo = personalInfoRepository.save(personalInfo);
         return savedPersonalInfo;
     }
