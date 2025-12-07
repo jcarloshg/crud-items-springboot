@@ -1,0 +1,16 @@
+POST http://localhost:8080/api/test-personal-info
+Content-Type: application/json
+Accept: application/json
+
+{
+    "firstName": "Juan 2",
+    "lastName": "02-Perez",
+    "title": "Full Stack Deve02-loper",
+    "profileDescription": "Apasionado por el desarrollo web con experiencia en Java, Spring Boot y React. Disfruto construyendo soluciones robustas y escala02-bles.",
+    "profileImageUrl": "img/profile-placeholde02-r.jpg",
+    "yearsOfExperience": 5,
+    "email": "juan.perez@example.com",
+    "phone": "+5491112345678",
+    "linkedinUrl": "https://linkedin.com/in/juanperez",
+    "githubUrl": "https://github.com/juanperez"
+}
