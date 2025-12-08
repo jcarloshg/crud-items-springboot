@@ -1,5 +1,6 @@
 package com.crud_items.crud_items_back.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,10 @@ public class PersonalTestInfoControl {
 
     @GetMapping("/all")
     public List<PersonalInfo> getAll() {
-        return personalInfoService.findAll();
+        List<PersonalInfo> personalInfos = personalInfoService.findAll();
+        List<PersonalInfo> personalInfosToResponse = new ArrayList<>();
+        personalInfosToResponse.add(personalInfos.get(0));
+        return personalInfosToResponse;
     }
 
     @GetMapping("{id}")

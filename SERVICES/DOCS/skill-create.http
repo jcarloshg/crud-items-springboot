@@ -4,7 +4,7 @@ Accept: application/json
 
   {
     "name": "Java Spring Boot",
-    "levelPercentage":-1,
+    "levelPercentage": 50,
     "iconClass": "fab fa-java",
     "personalInfoId": 1
   }

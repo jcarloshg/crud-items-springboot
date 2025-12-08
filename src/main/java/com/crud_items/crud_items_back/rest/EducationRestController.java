@@ -1,5 +1,6 @@
 package com.crud_items.crud_items_back.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,10 @@ public class EducationRestController {
 
     @GetMapping("/all")
     public List<Education> getAll() {
-        return educationService.findAll();
+        List<Education> educations = educationService.findAll();
+        List<Education> educationsToResponse = new ArrayList<>();
+        educationsToResponse.add(educations.getFirst());
+        return educationsToResponse;
     }
 
     @GetMapping("/{id}")

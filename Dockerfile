@@ -7,15 +7,13 @@ COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
 
-# Download dependencies (cached layer)
-RUN mvn dependency:go-offline -B
+# Build dependencies (for better layer caching)
+RUN ./mvnw clean install -DskipTests
 
 # Copy source code (will be overwritten by volume mount)
 COPY src ./src
 
+RUN ./mvnw clean install 
+
 # Expose port 8080
 EXPOSE 8080
-
-# Run with spring-boot:run for hot reload support
-# DevTools will automatically restart when files change
-ENTRYPOINT ["mvn", "spring-boot:run", "-Dspring-boot.run.jvmArguments=-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"]
