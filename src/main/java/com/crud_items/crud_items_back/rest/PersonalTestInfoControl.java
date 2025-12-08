@@ -32,9 +32,10 @@ public class PersonalTestInfoControl {
     @GetMapping("/all")
     public List<PersonalInfo> getAll() {
         List<PersonalInfo> personalInfos = personalInfoService.findAll();
-        List<PersonalInfo> personalInfosToResponse = new ArrayList<>();
-        personalInfosToResponse.add(personalInfos.get(0));
-        return personalInfosToResponse;
+        // List<PersonalInfo> personalInfosToResponse = new ArrayList<>();
+        // personalInfosToResponse.add(personalInfos.get(0));
+        // return personalInfosToResponse;
+        return personalInfos;
     }
 
     @GetMapping("{id}")

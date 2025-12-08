@@ -1,0 +1,15 @@
+services:
+  db:
+    build:
+      context: ./SERVICES/db
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=main
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+# Add other prod-specific services or overrides here

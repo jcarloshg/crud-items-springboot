@@ -1,5 +1,6 @@
 package com.crud_items.crud_items_back.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,12 @@ public class SkillRestController {
 
     @GetMapping("/all")
     public List<Skill> getAll() {
-        return skillService.findAll();
+        // return skillService.findAll();
+
+        List<Skill> skills = skillService.findAll();
+        List<Skill> skillsToReturn = new ArrayList<>();
+        skillsToReturn.add(skills.get(0));
+        return skillsToReturn;
     }
 
     @GetMapping("/{id}")

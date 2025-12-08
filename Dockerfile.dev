@@ -7,13 +7,14 @@ COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
 
-# Build dependencies (for better layer caching)
-RUN ./mvnw clean install -DskipTests
-
-# Copy source code (will be overwritten by volume mount)
+# Copy source code
 COPY src ./src
 
-RUN ./mvnw clean install 
+# Build application (skip tests for faster build)
+RUN ./mvnw clean install -DskipTests
 
 # Expose port 8080
 EXPOSE 8080
+
+# Run the application with hot reload (Spring DevTools)
+CMD ["./mvnw", "spring-boot:run"]
