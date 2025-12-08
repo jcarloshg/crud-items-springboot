@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -23,6 +24,7 @@ public class PersonalInfoServiceImp implements IPersonalInfoService {
     private final Validator validator;
 
     @Override
+    @Transactional // Ensures that the operation is executed within a transaction
     public PersonalInfo save(PersonalInfo personalInfo) {
         BindingResult result = new BeanPropertyBindingResult(personalInfo, "personalInfo");
         validator.validate(personalInfo, result);
@@ -39,17 +41,20 @@ public class PersonalInfoServiceImp implements IPersonalInfoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<PersonalInfo> findById(Long id) {
         Optional<PersonalInfo> personalInfo = personalInfoRepository.findById(id);
         return personalInfo;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<PersonalInfo> findAll() {
         return personalInfoRepository.findAll();
     }
 
     @Override
+    @Transactional // Ensures that the operation is executed within a transaction
     public void deleteById(Long id) {
         personalInfoRepository.deleteById(id);
     }

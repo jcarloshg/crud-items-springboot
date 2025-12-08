@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/skills
+Content-Type: application/json
+Accept: application/json
+
+  {
+    "name": "Java Spring Boot",
+    "levelPercentage":-1,
+    "iconClass": "fab fa-java",
+    "personalInfoId": 1
+  }
