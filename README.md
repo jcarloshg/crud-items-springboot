@@ -4,7 +4,7 @@
 
 This project is a Spring Boot-based RESTful API for managing personal information, skills, education, and experience records. It uses PostgreSQL as the database and supports full CRUD operations for each entity. The application is containerized with Docker for both development and production environments.
 
-- 🧩 Data Replication, 🧩 Criteria Pattern, 🛑 Domain Driven Design, 🧪 Unit & Integration Testing, 🏗️ Clean Architecture, 🔌 Connection Pooling, 🔄 Streaming Replication, ⚖️ Load Balancing
+- 🧪 Unit & Integration Testing, 🏗️ Clean Architecture, 🔌 Connection Pooling, 🔄 Streaming Replication
 - 🐳 Docker, 🐘 PostgreSQL, ☕ Java 21, 🟦 Spring Boot 4, 🧪 JUnit 5, 🛡️ Jakarta Bean Validation, 🖥️ Maven, 📄 Thymeleaf, 🗄️ Spring Data JDBC
 
 ## Features
