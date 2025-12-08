@@ -1,4 +1,4 @@
-package com.crud_items.crud_items_back.service;
+package com.crud_items.crud_items_back.integration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,6 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import com.crud_items.crud_items_back.exception.ValidationException;
 import com.crud_items.crud_items_back.model.Education;
 import com.crud_items.crud_items_back.repository.IEducationRepo;
+import com.crud_items.crud_items_back.service.IEducationService;
 
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)

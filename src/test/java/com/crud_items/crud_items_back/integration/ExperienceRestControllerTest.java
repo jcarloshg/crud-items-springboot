@@ -1,4 +1,4 @@
-package com.crud_items.crud_items_back.service;
+package com.crud_items.crud_items_back.integration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
