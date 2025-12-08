@@ -92,6 +92,8 @@ class SkillServiceImplTest {
     void findById_ReturnsSkillOptional() {
         // Arrange: mock repository to return a Skill for given id
         Skill skill = new Skill();
+        // Mock the repository to return an Optional containing the skill when findById
+        // is called with id 1L
         when(skillRepository.findById(1L)).thenReturn(Optional.of(skill));
         // Act: call findById on the service
         Optional<Skill> result = skillService.findById(1L);
@@ -106,6 +108,8 @@ class SkillServiceImplTest {
         Skill skill1 = new Skill();
         Skill skill2 = new Skill();
         List<Skill> skills = Arrays.asList(skill1, skill2);
+        // Mock the repository to return the predefined list of skills when findAll is
+        // called
         when(skillRepository.findAll()).thenReturn(skills);
         // Act: call findAll on the service
         List<Skill> result = skillService.findAll();
@@ -128,6 +132,8 @@ class SkillServiceImplTest {
         Skill skill1 = new Skill();
         Skill skill2 = new Skill();
         List<Skill> skills = Arrays.asList(skill1, skill2);
+        // Mock the repository to return the predefined list of skills when
+        // findByPersonId is called with 10L
         when(skillRepository.findByPersonId(10L)).thenReturn(skills);
         // Act: call findByPersonId on the service
         List<Skill> result = skillService.findByPersonId(10L);
